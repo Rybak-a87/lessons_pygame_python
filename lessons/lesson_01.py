@@ -19,7 +19,7 @@ pygame.display.set_mode((600, 400), pygame.FULLSCREEN | pygame.HWSURFACE)    # �
 pygame.display.set_caption("Моя первая игра на PyGame")
 
 # иконка окна (желательно *.bmp)
-pygame.display.set_icon(pygame.image.load("ico.png"))
+pygame.display.set_icon(pygame.image.load("../utils/ico.png"))
 
 # для задержка (для FPS)
 clock = pygame.time.Clock()

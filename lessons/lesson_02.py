@@ -20,7 +20,7 @@ WIDTH = 600
 HEIGHT = 400
 sc = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Графические примитивы")
-pygame.display.set_icon(pygame.image.load("ico.png"))
+pygame.display.set_icon(pygame.image.load("../utils/ico.png"))
 
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)

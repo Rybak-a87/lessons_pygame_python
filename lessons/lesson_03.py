@@ -16,7 +16,7 @@ WIDTH = 600
 HEIGHT = 400
 sc = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("События курсора")
-pygame.display.set_icon(pygame.image.load("ico.png"))
+pygame.display.set_icon(pygame.image.load("../utils/ico.png"))
 
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
