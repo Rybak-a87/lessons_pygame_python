@@ -35,12 +35,16 @@ import pygame
 from lessons.lesson_11.ball import Ball
 from utils.colors_rgb import *
 
+pygame.mixer.pre_init(44100, -16, 1, 512)    # убрать зажержку звука (часто используется)
 pygame.init()
 pygame.time.set_timer(pygame.USEREVENT, 2000)    # генерирование события USEREVENT каждые 2000 мс
 
 # фоновая музыка
 pygame.mixer.music.load("sounds/bird.wav")
 pygame.mixer.music.play(loops=-1)
+
+# звук пойманого шара
+sound = pygame.mixer.Sound("sounds/catch.ogg")
 
 WIDTH = 1000
 HEIGHT = 570
@@ -80,6 +84,7 @@ def collide_balls():
     for ball in balls:
         if telega_rect.collidepoint(ball.rect.center):
             game_score += ball.score
+            sound.play()    # вызов звука ловли шарика
             ball.kill()
 
 # группа шариков
@@ -109,6 +114,12 @@ while running:
                     pygame.mixer.music.pause()
                 else:
                     pygame.mixer.music.unpause()
+            elif event.key == pygame.K_UP:
+                vol += 0.1
+                pygame.mixer.music.set_volume(vol)
+            elif event.key == pygame.K_DOWN:
+                vol -= 0.1
+                pygame.mixer.music.set_volume(vol)
 
     # для зажатых клавишь
     keys = pygame.key.get_pressed()
@@ -126,12 +137,12 @@ while running:
     #         pygame.mixer.music.pause()
     #     else:
     #         pygame.mixer.music.unpause()
-    elif keys[pygame.K_UP]:
-        vol += 0.1
-        pygame.mixer.music.set_volume(vol)
-    elif keys[pygame.K_DOWN]:
-        vol -= 0.1
-        pygame.mixer.music.set_volume(vol)
+    # elif keys[pygame.K_UP]:
+    #     vol += 0.1
+    #     pygame.mixer.music.set_volume(vol)
+    # elif keys[pygame.K_DOWN]:
+    #     vol -= 0.1
+    #     pygame.mixer.music.set_volume(vol)
 
 
     # контроль столкновений
